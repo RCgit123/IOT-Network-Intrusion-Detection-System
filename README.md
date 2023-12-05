@@ -1,2 +1,2 @@
 # IOT-Network-Intrusion-Detection-System
-a simple site for php tutorial
+an iot network intrusion detection site
