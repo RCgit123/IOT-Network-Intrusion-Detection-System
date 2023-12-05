@@ -1,3 +1,3 @@
 from src.IOT_NIDS import logger
 
-logger.info("Welcome to our custom log")
+logger.info("Welcome to my custom log")

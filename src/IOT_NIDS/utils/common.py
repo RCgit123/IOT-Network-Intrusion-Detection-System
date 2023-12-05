@@ -12,7 +12,6 @@ from typing import Any
 import base64
 
 
-
 @ensure_annotations
 def read_yaml(path_to_yaml: Path) -> ConfigBox:
     """reads yaml file and returns
@@ -65,9 +64,6 @@ def save_json(path: Path, data: dict):
         json.dump(data, f, indent=4)
 
     logger.info(f"json file saved at: {path}")
-
-
-
 
 @ensure_annotations
 def load_json(path: Path) -> ConfigBox:
