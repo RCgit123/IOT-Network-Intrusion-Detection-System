@@ -5,7 +5,7 @@ import logging
 #logging string
 logging.basicConfig(level=logging.INFO, format='[%(asctime)s]: %(message)s:')
 
-project_name ='NidsDetection'
+project_name ='IOT_NIDS'
 
 list_of_files=[
     ".github/workflows/.gitkeep",
@@ -20,7 +20,7 @@ list_of_files=[
     "config/config.yaml",
     "dvc.yaml",
     "params.yaml",
-    "requirements.txt"
+    "requirements.txt",
     "setup.txt",
     "research/trials.ipynb",
     "templates/index.html"
