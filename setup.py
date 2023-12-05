@@ -7,4 +7,21 @@ __version__="0.0.0"
 
 REPO_NAME="IOT-Network-Intrusion-Detection-System"
 AUTHOR_USER_NAME="RCgit"
-SRC_REPO= 'NidsDetection'
+SRC_REPO= 'IOT_NIDS'
+AUTHOR_EMAIL="rajachowdhury404@gmail.com"
+
+setuptools.setup(
+    name=SRC_REPO,
+    version= __version__,
+    author=AUTHOR_USER_NAME,
+    author_email=AUTHOR_EMAIL,
+    description="A small python package for DNN app",
+    long_description=long_description,
+    long_description_content="text/markdown",
+    url=f"https://github.com/{AUTHOR_USER_NAME}/{REPO_NAME}/issues",
+    project_urls={
+        "Bug Tracker": f"https://github.com/{AUTHOR_USER_NAME}/{REPO_NAME}/issues",
+    },
+    package_dir={"": "src"},
+    packages=setuptools.find_packages(where="src")
+)
