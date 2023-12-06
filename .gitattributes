@@ -1,7 +1,4 @@
-/workspaces/newsite/IOT-Network-Intrusion-Detection-System/artifacts/data_ingestion/data.zip filter=lfs diff=lfs merge=lfs -text
-/workspaces/newsite/IOT-Network-Intrusion-Detection-System/artifacts/data_ingestion/x_train.csv filter=lfs diff=lfs merge=lfs -text
-/workspaces/newsite/IOT-Network-Intrusion-Detection-System/artifacts/data_ingestion/y_train.csv filter=lfs diff=lfs merge=lfs -text
-/workspaces/newsite/IOT-Network-Intrusion-Detection-System/artifacts/data_ingestion/x_test.csv filter=lfs diff=lfs merge=lfs -text
-/workspaces/newsite/IOT-Network-Intrusion-Detection-System/artifacts/data_ingestion/y_test.csv filter=lfs diff=lfs merge=lfs -text
+artifacts/data_ingestion/x_train.csv filter=lfs diff=lfs merge=lfs -text
+research/DNN-EdgeIIoT-dataset.zip filter=lfs diff=lfs merge=lfs -text
 *.zip filter=lfs diff=lfs merge=lfs -text
 *.csv filter=lfs diff=lfs merge=lfs -text
