@@ -7,3 +7,9 @@ data_ingestion:
   local_data_file: artifacts/data_ingestion/data.zip
   unzip_dir: artifacts/data_ingestion
 
+model_evaluation:
+  root_dir: artifacts/model_evaluation
+  test_data_path: artifacts/data_ingestion/x_test.csv
+  label_data_path: artifacts/data_ingestion/y_test.csv
+  model_path: artifacts/gru_model/gru_model.h5
+  metric_file_name: artifacts/model_evaluation/metrics.json
