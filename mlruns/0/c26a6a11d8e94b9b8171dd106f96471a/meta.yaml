@@ -1,0 +1,15 @@
+artifact_uri: file:///workspaces/newsite/IOT-Network-Intrusion-Detection-System/mlruns/0/c26a6a11d8e94b9b8171dd106f96471a/artifacts
+end_time: 1701946394210
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: c26a6a11d8e94b9b8171dd106f96471a
+run_name: whimsical-fox-604
+run_uuid: c26a6a11d8e94b9b8171dd106f96471a
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1701946335693
+status: 3
+tags: []
+user_id: codespace

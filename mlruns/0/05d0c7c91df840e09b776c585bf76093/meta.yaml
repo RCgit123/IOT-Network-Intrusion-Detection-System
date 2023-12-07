@@ -1,0 +1,15 @@
+artifact_uri: file:///workspaces/newsite/IOT-Network-Intrusion-Detection-System/mlruns/0/05d0c7c91df840e09b776c585bf76093/artifacts
+end_time: 1701946272851
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 05d0c7c91df840e09b776c585bf76093
+run_name: melodic-ant-22
+run_uuid: 05d0c7c91df840e09b776c585bf76093
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1701946213471
+status: 3
+tags: []
+user_id: codespace
