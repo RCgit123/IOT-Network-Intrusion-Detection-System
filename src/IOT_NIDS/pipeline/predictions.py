@@ -11,7 +11,7 @@ class Pred:
               self.model=load_model(Path('model/gru_model.h5'))
         import ipaddress
 
-        def convert_to_int(ip_str):
+        def convert_to_int(self,ip_str):
             try:
                 return int(ipaddress.IPv4Address(self, ip_str))
             except ipaddress.AddressValueError:
