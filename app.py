@@ -29,11 +29,11 @@ def predict():
         
     file_path = os.path.join(upload_dir, file.filename)
     file.save(file_path)
-    # You can now pass the file to your prediction function
+    # 
     obj = Pred()
     prediction_result=obj.predictionPipeline(file_path)
     return  jsonify({'result': prediction_result[0]})
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0',port=8080)
