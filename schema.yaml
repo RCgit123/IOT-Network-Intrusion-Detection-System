@@ -1,0 +1,18 @@
+COLUMNS:
+  ip.src_host: 
+  icmp.seq_le: float64
+  http.content_length: float64
+  http.response: float64
+  tcp.ack: float64
+  tcp.ack_raw: float64
+  tcp.checksum: float64
+  tcp.connection.fin: float64
+  tcp.flags.ack: float64
+  tcp.len: float64
+  tcp.srcport: float64
+  udp.stream: float64
+  dns.qry.name: float64
+  mqtt.msgtype: float64
+
+TARGET_COLUMN:
+  name: encoded_attack
