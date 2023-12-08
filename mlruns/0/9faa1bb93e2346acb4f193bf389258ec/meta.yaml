@@ -1,0 +1,15 @@
+artifact_uri: file:///workspaces/newsite/IOT-Network-Intrusion-Detection-System/mlruns/0/9faa1bb93e2346acb4f193bf389258ec/artifacts
+end_time: 1701932092097
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 9faa1bb93e2346acb4f193bf389258ec
+run_name: silent-elk-365
+run_uuid: 9faa1bb93e2346acb4f193bf389258ec
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1701932035884
+status: 3
+tags: []
+user_id: codespace
