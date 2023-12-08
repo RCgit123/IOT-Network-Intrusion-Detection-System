@@ -12,6 +12,7 @@ app= Flask(__name__)
 def homePage():
     return render_template("index2.html")
 
+
 @app.route('/predict', methods=['POST'])
 def predict():
     if 'file' not in request.files:
@@ -32,6 +33,7 @@ def predict():
     obj = Pred()
     prediction_result=obj.predictionPipeline(file_path)
     return  jsonify({'result': prediction_result[0]})
+
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -5,6 +5,7 @@ from tensorflow.keras.models import load_model
 from sklearn.preprocessing import MinMaxScaler
 import ipaddress
 
+
 class Pred:
         def __init__(self):
               self.model=load_model(Path('model/gru_model.h5'))
