@@ -13,7 +13,7 @@ class Pred:
 
         def convert_to_int(self,ip_str):
             try:
-                return int(ipaddress.IPv4Address(self, ip_str))
+                return int(ipaddress.IPv4Address(ip_str))
             except ipaddress.AddressValueError:
                 return None  # or handle the error in a way that makes sense for your case
         
