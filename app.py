@@ -10,7 +10,7 @@ app= Flask(__name__)
 
 @app.route('/',methods=['GET'])
 def homePage():
-    return render_template("index2.html")
+    return render_template("index.html")
 
 
 @app.route('/predict', methods=['POST'])

@@ -13,7 +13,7 @@ class Pred:
 
         def convert_to_int(ip_str):
             try:
-                return int(ipaddress.IPv4Address(ip_str))
+                return int(ipaddress.IPv4Address(self, ip_str))
             except ipaddress.AddressValueError:
                 return None  # or handle the error in a way that makes sense for your case
         
@@ -22,7 +22,7 @@ class Pred:
             min_max_scaler = MinMaxScaler()
             test=pd.read_csv(data)
             #transforming the columns
-            test['ip.src_host'] = test['ip.src_host'].apply(convert_to_int)
+            test['ip.src_host'] = test['ip.src_host'].apply(self.convert_to_int)
             test['tcp.srcport'] = test['tcp.srcport'].astype(np.float64)
             test = min_max_scaler.fit_transform(test.head(100))
             predictions = self.model.predict(test)
