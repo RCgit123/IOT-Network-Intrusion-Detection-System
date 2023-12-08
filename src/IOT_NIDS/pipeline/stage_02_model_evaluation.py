@@ -12,7 +12,7 @@ class ModelEvaluationPipeline:
         config = ConfigurationManager()
         model_evaluation_config = config.get_evaluation_config()
         model_evaluation_config = Evaluation(config=model_evaluation_config)
-        model_evaluation_config.log_into_mlflow()
+        #model_evaluation_config.log_into_mlflow()
 
 
 
