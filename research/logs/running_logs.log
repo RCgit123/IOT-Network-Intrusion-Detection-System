@@ -1,0 +1,6 @@
+[2023-12-06 13:44:09,783: INFO: common: yaml file: /workspaces/newsite/IOT-Network-Intrusion-Detection-System/research/config.yaml loaded successfully]
+[2023-12-06 13:44:09,784: INFO: common: yaml file: params.yaml loaded successfully]
+[2023-12-06 13:44:09,784: INFO: common: created directory at: artifacts]
+[2023-12-06 13:44:09,785: INFO: common: created directory at: artifacts/data_ingestion]
+[2023-12-06 13:44:09,785: INFO: data_ingestion: Downloading data from https://drive.google.com/file/d/1OEAJcEe1ycMRrtUpAMAYTBb-8txf_1Er/view?usp=sharing into file artifacts/data_ingestion/data.zip]
+[2023-12-06 13:44:12,673: INFO: data_ingestion: Downloaded data from https://drive.google.com/file/d/1OEAJcEe1ycMRrtUpAMAYTBb-8txf_1Er/view?usp=sharing into file artifacts/data_ingestion/data.zip]
