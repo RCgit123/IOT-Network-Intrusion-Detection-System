@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Upload</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap');
+        @font-face {
+            font-family: 'Ethnocentric';
+            src: url('static/ethnocentric rg.otf') format('opentype');
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #001f3f, #800080, #ffffff);
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        
+        #video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        
+        @keyframes moveNode {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(50px);
+            }
+        }
+        
+        @keyframes glow {
+            0%,
+            100% {
+                box-shadow: 0 0 20px rgba(0, 0, 255, 0.8);
+            }
+            50% {
+                box-shadow: 0 0 40px rgba(0, 0, 255, 1);
+            }
+        }
+        
+        @font-face {
+            font-family: 'YourFont';
+            src: url('static/ethnocentric rg.otf') format('opentype');
+            /* Adjust the path to the font file based on your project structure */
+            font-weight: normal;
+            font-style: normal;
+        }
+        
+        h1 {
+            margin-top: 0;
+            color: #ddd;
+            font-family: 'YourFont';
+            text-shadow: 4px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .file-upload {
+            text-align: center;
+            background-color: rgb(16, 1, 39);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.888);
+            margin-top: 20px;
+            margin-bottom: 20%;
+        }
+        
+        .file-dropzone {
+            width: 200px;
+            height: 80px;
+            border: 2px dashed #ccc;
+            text-align: center;
+            line-height: 100px;
+            cursor: pointer;
+            border-radius: 8px;
+            margin: 20px auto;
+            color: #ddd;
+        }
+        
+        .file-dropzone:hover {
+            border-color: #c4c0c0;
+        }
+        
+        .file-browse {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 0px;
+            margin-right: 2px;
+            box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.5);
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            transition: background-color 0.3s, box-shadow 0.3s;
+            /* Add box-shadow to the transition */
+        }
+        /* Add a box-shadow when hovering */
+        
+        .file-browse:hover {
+            background-color: #45a049;
+            /* Change the background color on hover */
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.7);
+            /* Add a glowing effect with a green color */
+        }
+        
+        .file-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        p {
+            color: #ddd;
+        }
+        
+        .file-list li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        
+        .file-list li .file-name {
+            flex: 1;
+            color: #ddd;
+        }
+        
+        .file-list li .file-delete {
+            padding: 8px;
+            background-color: #f44336;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .file-list li .file-delete:hover {
+            background-color: #d32f2f;
+        }
+        
+        .file-progress {
+            display: none;
+            margin-top: 10px;
+        }
+        
+        .file-progress-bar {
+            width: 0;
+            height: 20px;
+            background-color: #4caf50;
+            border-radius: 4px;
+        }
+        
+        .analysis-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 75px;
+            background-color: #4c4eaf;
+            color: #fff;
+            border: none;
+            box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.5);
+            border-radius: 4px;
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+        
+        .analysis-button:hover {
+            background-color: #4c4eaf;
+            /* Change the background color on hover */
+            box-shadow: 0 0 10px rgba(0, 132, 255, 0.7);
+        }
+        
+        #resultBoxContainer {
+            position: fixed;
+            
+        }
+        
+        #resultBox {
+            background-color: rgb(16, 1, 39);
+            color: white;
+            padding: 20px;
+            padding-top: 20px;
+            padding-left: 20px;
+            border-radius: 8px;
+            position: absolute;
+            transform: translateY(200%);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.888);
+            text-align: center;
+            margin-top: 300px;
+            width: 160px;
+            /*text: center;*/
+        }
+        
+        #loadingContainer {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        #loadingSpinner {
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top: 2px solid white;
+            width: 20px;
+            height: 20px;
+            margin-top:470px;
+            margin-bottom: 10px;
+            animation: spin 1s linear infinite;
+            margin-right: 9x;
+            display: inline-block;
+        }
+        
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <video id="video-background" autoplay muted loop preload="auto">
+        <source src="{{ url_for('static',filename='pink.mp4')}}" type="video/mp4">
+       </video>
+
+
+    <h1>IOT</h1>
+    <h1>Network - Intrusion - Detector</h1>
+    <div class="file-upload">
+        <div class="file-dropzone" id="fileDropzone">
+            <p>Drag and drop file</p>
+            <button type="button" class="file-browse" onclick="document.getElementById('fileInput').click()">Browse</button>
+            <button type="button" class="analysis-button" onclick="analyzeFiles()">Analysis</button>
+        </div>
+        <input type="file" name='csv_file' id="fileInput" style="display: none" />
+        <ul class="file-list"></ul>
+        <div class="file-progress">
+            <div class="file-progress-bar" id="fileProgressBar"></div>
+        </div>
+    </div>
+
+    <!-- box for displaying the predicted label with loading animation -->
+    <div id="resultBox"></div>
+    <div id="resultBoxContainer">
+        <div id="loadingContainer">
+            <div id="loadingSpinner"></div>
+        </div>
+    </div>
+
+
+    <script>
+        class FileUploader {
+            constructor(selector) {
+                this.container = document.querySelector(selector);
+                this.fileList = this.container.querySelector('.file-list');
+                this.fileProgress = this.container.querySelector('.file-progress');
+                this.fileProgressBar = this.container.querySelector('.file-progress-bar');
+            }
+
+            addFile(file) {
+                    const fileListItem = document.createElement('li');
+                    fileListItem.setAttribute('data-file-id', file.id);
+                    fileListItem.innerHTML = `
+                    <span class="file-name">${file.name}</span>
+                    <button type="button" class="file-delete" onclick="fileUploader.deleteFile(${file.id})">Delete</button>
+                `;
+
+                    this.fileList.appendChild(fileListItem);
+                    this.emit('fileAdded', file);
+                }
+                /*
+                            deleteFile(fileId) {
+                                const fileListItem = document.querySelector(`.file-list li[data-file-id="${fileId}"]`);
+                                this.fileList.removeChild(fileListItem);
+                                this.emit('fileDeleted', fileId);
+                            }*/
+
+
+
+            deleteFile(fileId) {
+                const fileListItem = document.querySelector(`.file-list li[data-file-id="${fileId}"]`);
+                if (fileListItem) {
+                    // Check if the file being deleted is the one currently being uploaded
+                    const isUploading = fileListItem.classList.contains('uploading');
+
+                    this.fileList.removeChild(fileListItem);
+                    this.emit('fileDeleted', fileId);
+
+                    // If the deleted file is the one being uploaded, reset the progress bar
+                    if (isUploading) {
+                        this.resetProgressBar();
+                    }
+                }
+            }
+
+            resetProgressBar() {
+                this.fileProgress.style.display = 'none';
+                this.fileProgressBar.style.width = '0%';
+            }
+
+
+
+
+            on(eventName, callback) {
+                if (!this.events) {
+                    this.events = {};
+                }
+
+                if (!this.events[eventName]) {
+                    this.events[eventName] = [];
+                }
+
+                this.events[eventName].push(callback);
+            }
+
+            emit(eventName, data) {
+                if (this.events && this.events[eventName]) {
+                    this.events[eventName].forEach(callback => {
+                        callback(data);
+                    });
+                }
+            }
+        }
+
+
+
+
+        const fileUploader = new FileUploader('.file-upload');
+
+        document.getElementById('fileInput').addEventListener('change', (event) => {
+            const files = event.target.files;
+            if (files.length > 0) {
+                const file = {
+                    id: Date.now(), // You can use a unique identifier here
+                    name: files[0].name,
+                };
+                fileUploader.addFile(file);
+                // Simulate file upload with a delay
+                simulateFileUpload(files[0]);
+            }
+        });
+
+        function simulateFileUpload(file) {
+            const progressInterval = 0.1; // milliseconds
+            const totalSize = file.size;
+
+            const fileListItem = document.querySelector('.file-list li:last-child');
+            fileListItem.classList.add('uploading');
+
+            let uploadedSize = 0;
+            fileUploader.fileProgress.style.display = 'block';
+            const intervalId = setInterval(() => {
+                uploadedSize += 51200; // Simulate uploading 1KB at a time
+                const progressPercentage = (uploadedSize / totalSize) * 100;
+                fileUploader.fileProgressBar.style.width = `${progressPercentage}%`;
+                if (uploadedSize >= totalSize) {
+                    clearInterval(intervalId);
+                    fileUploader.fileProgress.style.display = 'none';
+                    fileListItem.classList.remove('uploading');
+                }
+            }, progressInterval);
+        }
+
+
+
+        <!-- prediction function -->
+        function analyzeFiles() {
+            const fileInput = document.getElementById('fileInput');
+            const files = fileInput.files;
+            const loadingContainer = document.getElementById('loadingContainer');
+
+            if (files.length > 0) {
+                const formData = new FormData();
+                formData.append('file', files[0]);
+                showLoadingAnimation();
+
+                //triggering the predict url in flask app
+                fetch('/predict', {
+                        method: 'POST',
+                        body: formData,
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        // Display the result in a box on the page
+                        hideLoadingAnimation();
+                        displayResult(data.result);
+                    })
+                    .catch(error => {
+                        hideLoadingAnimation();
+                        console.error('Error:', error);
+                    });
+            }
+        }
+
+        function showLoadingAnimation() {
+            document.getElementById('loadingContainer').style.display = 'block';
+        }
+
+        function hideLoadingAnimation() {
+            document.getElementById('loadingContainer').style.display = 'none';
+        }
+
+        function displayResult(result) {
+            const resultBox = document.getElementById('resultBox');
+            // Display the result in the box
+            resultBox.innerText = result;
+        }
+    </script>
+
+</body>
+
+</html>
