@@ -32,7 +32,7 @@ def predict():
     # 
     obj = Pred()
     prediction_result=obj.predictionPipeline(file_path)
-    return  jsonify({'result': prediction_result[0]})
+    return  jsonify({'result': prediction_result})
 
 
 if __name__ == '__main__':
