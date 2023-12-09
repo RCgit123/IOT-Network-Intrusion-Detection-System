@@ -190,6 +190,9 @@
         
         #resultBoxContainer {
             position: fixed;
+            top: 50%; 
+            left: 50%; 
+            transform: translate(-50%, -50%);
             
         }
         
@@ -204,9 +207,10 @@
             transform: translateY(200%);
             box-shadow: 0 0 10px rgba(255, 255, 255, 0.888);
             text-align: center;
+            overflow-y: auto;
             margin-top: 300px;
             width: 160px;
-            /*text: center;*/
+            
         }
         
         #loadingContainer {
@@ -243,7 +247,7 @@
 
 <body>
     <video id="video-background" autoplay muted loop preload="auto">
-        <source src="{{ url_for('static',filename='pink.mp4')}}" type="video/mp4">
+        <source src="{{ url_for('static',filename='bg.mp4')}}" type="video/mp4">
        </video>
 
 
