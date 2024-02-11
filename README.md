@@ -21,7 +21,7 @@ an iot network intrusion detection site
 Clone the repository
 
 ```bash
-https://github.com/krishnaik06/Kidney-Disease-Classification-Deep-Learning-Project
+https://github.com/RCgit123/IOT-Network-Intrusion-Detection-System
 ```
 ### STEP 01- Create a conda environment after opening the repository
 
